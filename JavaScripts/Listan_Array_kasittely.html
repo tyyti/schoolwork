@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listan (Array) käsittely</title>
+
+    <script type="text/javascript">
+
+        var minunLista = ["Matti", "Pekka", "Marja", "Tuija"];
+
+        function tulostaNimet() {
+            document.getElementById("lista").innerHTML = minunLista.join(",");
+        }
+
+        function poistaEka() {
+            minunLista.splice(0, 1);  //poistaa listasta 0:n alkion
+            tulostaNimet();			 //näytä lista
+        }
+
+        function lisaaListaan() {
+            var uusi = window.prompt("Anna uusi nimi:");
+            minunLista.push(uusi);	 //kirjoita alkio viimeiseksi
+            tulostaNimet();			 //näytä lista
+        }
+
+        function listanPituus() {
+            var pituus = minunLista.length;      //hakee listan pituuden
+            window.alert(pituus);
+        }
+
+        function jarjestaLista() {
+            minunLista.sort();             //järjestää listan
+            tulostaNimet();			 //näytä lista
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <h2>Kirjoitetaan funktio</h2>
+
+    <input type="button" value="Näytä lista" id="nappi1" onClick="tulostaNimet();" />
+    <input type="button" value="Poista eka nimi" id="nappi2" onClick="poistaEka();" />
+    <input type="button" value="Lisää nimi" id="nappi3" onClick="lisaaListaan();" />
+    <input type="button" value="Listan pituus" id="nappi4" onClick="listanPituus();" />
+    <input type="button" value="Järjestä lista" id="nappi5" onClick="jarjestaLista();" />
+
+    <br />
+    <div id="lista">
+    </div>
+
+
+</body>
+
+</html>

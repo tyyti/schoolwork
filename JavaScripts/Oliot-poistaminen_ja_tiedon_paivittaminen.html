@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliot - Poistaminen ja tiedon päivittäminen</title>
+
+    <script type="text/javascript">
+
+        let numerot = {
+            "Pentti": "8789755",
+            "Maija": "3542465",
+            "Untamo": "3452657"
+        };
+
+
+        function annaNumero() {
+            let nimi = document.getElementById("zone").value;   //hae tekstikentästä arvo
+            let tulos = document.getElementById("tulos");		//tänne tulee tulos
+
+            if (nimi in numerot) {                 		   //jos nimi löytyy kirjastosta
+                tulos.innerHTML = numerot[nimi];           //tulostetaan nimeen liittyvä numero
+            } else {                               		   //muuten
+                tulos.innerHTML = "Nimeä ei löytynyt.";    //tulostetaan virhe
+            }
+        }
+
+        function annaKaikki() {
+            let tulos = document.getElementById("tulos");		//tänne tulee tulos	
+            let merkkijono = "";								//tehdään ensin tyhjä tulos
+
+            for (nimi in numerot) {                				//toistetaan niin kauan kun arvoja kirjastossa
+                let tiedot = nimi + " puh: " + numerot[nimi];   //hakee nimen ja numeron merkkijonoon
+
+                merkkijono = merkkijono + tiedot + "<br />";    //tekee merkkijonon ja rivinvaihdon  
+            }
+
+            tulos.innerHTML = merkkijono;		//vie valmiin merkkijonon tuloskenttään
+        }
+
+
+        function poistaNimi() {
+            let tulos = document.getElementById("tulos");
+
+            let poistettava = window.prompt("Anna poistettava nimi:");  //kysytään poistettava
+            if (poistettava in numerot) {                       			//jos poistettava kirjastossa
+                delete numerot[poistettava];                    		//poistetaan
+                tulos.innerHTML = "Poisto tehty!";                      //ilmoitetaan poistosta
+            } else {
+                tulos.innerHTML = "Poistettavaa ei löytynyt.";          //muuten ilmoitetaan, ettei löytynyt
+            }
+        }
+
+        function uusiMuutos() {
+            let muutos = window.prompt("Anna nimi:");         //kysytään nimi
+            let numero = window.prompt("Anna numero");        //kysytään numero
+
+            numerot[muutos] = numero;              //sijoitetaan uusi alkio numeroihin
+
+            document.getElementById("tulos").innerHTML = "Muutos tehty";
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+
+    <input id="zone" /><br />
+    <input type="button" id="mybutton" value="Hae numero" onClick="annaNumero();" />
+    <input type="button" id="button2" value="Hae kaikki" onClick="annaKaikki();" />
+    <input type="button" id="button3" value="Poista nimi" onClick="poistaNimi();" />
+    <input type="button" id="button4" value="Lisää/muuta numero" onClick="uusiMuutos();" />
+
+    <div id="tulos"></div>
+
+
+</body>
+
+</html>
