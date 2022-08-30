@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div.a {
+        text-align: center;
+        padding: 100px 0 100px;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity:0
+        }        
+        100% {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+
+    </style>
+    <script>
+      function jakoLasku() {
+        let teksti;
+        let jaettava = prompt("Give number to divide:");
+        let jakaja = prompt("Give a number you want to divide the previous with:");
+        if (jaettava == null || jakaja == null) {
+          teksti = "You must give numbers.";
+        } else {
+          teksti = myFunction(jaettava, jakaja);
+        }
+        document.getElementById("testi").innerHTML = teksti;
+        const myTimeout = setTimeout(myGreeting, 1500);
+        function myGreeting() {
+          document.getElementById("message").innerHTML = "Thank you for testing this little task!";
+        }
+        
+      }
+
+      function myFunction(jaettava, jakaja) {
+        console.log(jaettava);
+        console.log(jakaja);
+        return jaettava / jakaja;
+      }
+  
+    </script>
+  </head>
+<body>
+  <div class="a">
+    <h2>Division</h2>
+    <br>
+    <button class="button" type="button" onclick="jakoLasku();">Click here to divide!</button>
+    <br>
+    <p id="testi"></p>
+    <br>
+    <h3 id="message"></h3>
+    </div>
+</body>
+</html>
