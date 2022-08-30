@@ -6,5 +6,6 @@ This is the repository for my schoolwork I have been working with in my programm
 ## The Contents
 
 ### JavaScripts
+- Division task
 - Managing an Array (/Listan Array -käsittely)
 - Objects - deleting and updating the contents (/Oliot - poistaminen ja tiedon päivittäminen)
